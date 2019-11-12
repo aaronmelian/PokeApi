@@ -370,8 +370,8 @@ class PokeList extends Component {
     }
 
   
-    console.log('GIT TEST')
     render() {
+        console.log('GIT TEST')
         
 
 
