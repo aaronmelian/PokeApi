@@ -1,0 +1,465 @@
+.WhoIsThatContainerBackGround {
+    height: 100%;
+}
+.WhoIsThatContainer {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+
+    grid-template-areas:
+    "score score score title title title title title title result result result"
+    "image image image image image image image image image image image image"
+    "guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt  guessTxt  guessTxt  guessTxt"
+    "optns  optns  optns  optns optns optns optns optns optns optns optns  optns "
+    "chosBut chosBut  chosBut  chosBut chosBut chosBut playBut playBut playBut playBut playBut  playBut"
+    "gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel"
+
+
+}
+
+.WhoIsThatTextContainer {
+    width: auto;
+    margin: 15px auto 15px auto;
+    background-color: rgb(33, 150, 243);
+    border-radius: 10px;
+    padding: 30px 15px;
+    border: 2px solid black;
+    grid-area: title;
+
+   
+}
+
+.WhoIsThatText{
+    margin: auto auto;
+    font-weight: 500;
+    font-size: 130%;
+}
+
+/* 2nd Grid --- Image Positioning -Start */
+
+.ImageBlock {
+    margin: 0 auto;
+    width: 100%;
+
+    grid-area: image;
+}
+
+.WhoIsThatPokeContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.WhoIsThatPokeBackground{
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 100%;
+    border: 2px solid black;
+
+
+    height: auto;
+
+    grid-column-start: 1;
+    grid-column-end: 13;
+    grid-row-start: 1;
+    grid-row-end: 10;
+}
+.WhoIsThatPoke{
+    margin: 0 auto;
+    width: 100%;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 8 ;
+}
+/* 2nd Grid --- Image Positioning -END */
+
+.Black {
+    transition: none;
+}
+
+.GuessTextContainer {
+     
+    display: flex;
+    justify-content: space-between;
+    font-size: 120%;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    transition: 1.5s;
+    border: 2px solid black;
+
+    grid-area: guessTxt;
+
+}
+
+.GuessText{
+    margin: auto 10px auto 5px;
+}
+
+
+.InputContainer {
+    width: 100%;
+    margin: auto 0;
+    display: inline-block;
+    margin-right: 30px;
+
+}
+
+.Input {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 110%;
+    padding: 8px 5px 5px 10px;
+}
+
+.GuessButtonContainer {
+    position: relative;
+    top: 1px;
+}
+
+.GuessButton {
+    cursor: pointer;
+    background-color: #ddd;
+    border: 1px solid gray;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 8.5px 10px;
+    font-size: 90%;
+    box-sizing: border-box;
+}
+.GuessButton:hover {
+    background-color: #eee;
+}
+
+
+.ScoreBoardContainer {
+    margin: 15px 0 15px 0;
+    display: flex;
+    grid-area: score;
+
+}
+
+.ScoreBoard {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 100%;
+    background-color: #252525;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    border: 2px solid black;
+}
+
+.ScoreTitle {
+    margin: 0 auto;
+    font-weight: 600;
+    font-size: 110%;
+    padding: 10px 0;
+    color: white;
+}
+
+
+.ScoreNumber {
+    width: 75%;
+    margin: 0 auto;
+    font-weight: 600;
+    font-size: 160%;
+    color: rgb(79, 187, 16);
+    background-color: #1b1b1b;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-shadow: 2.5px 2px 2px rgba(0, 0, 0, 0.7);
+    transition: 2s;
+}
+
+.ResultBoardContainer {
+    margin: 15px 0 15px 0;
+    display: flex;
+    justify-content: space-evenly;
+    grid-area: result;
+}
+
+
+
+.Result {
+    margin: 0 auto;
+}
+
+
+.ResultBoard {
+    background-color: #252525;
+    width: 150px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    margin: 10px 5px    
+}
+
+.ResultWrong {
+    margin: 0 auto;
+    color: red;
+}
+
+.ChooseGenButton {
+    grid-area: chosBut;
+    margin: 15px auto;
+    background-color: rgb(33, 150, 243);
+    padding: 10px;
+    font-size: 150%;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.ChooseGenButton:hover{
+    background-color: #86c6f6;
+}
+.ChooseGenButton:focus{
+    background-color: #86c6f6;
+    outline: none;
+}
+
+.PlayAgainButton{
+    grid-area: playBut;
+    margin: 15px auto;
+    background-color: rgb(33, 150, 243);
+    padding: 10px;
+    font-size: 150%;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+    box-sizing: border-box;
+
+}
+.PlayAgainButton:hover{
+    background-color: #86c6f6;
+}
+.PlayAgainButton:focus{
+    background-color: #86c6f6;
+    outline: none;
+}
+
+.gameOverText {
+    margin: 15px auto;
+    background-color: rgb(33, 150, 243);
+    padding: 10px;
+    font-size: 150%;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 2px solid black;
+    z-index: 800;
+
+    grid-column-start: 3;
+    grid-column-end: 11;
+    grid-row-start: 4;
+    grid-row-end: 6;
+}
+
+.OptionsList{
+    grid-area: optns;
+    margin-top: 5px;
+    
+}
+
+.InputOption {
+    width: 100%;
+    background-color: #ddd;
+    margin-top: 2px;
+    font-size: 150%;
+    font-weight: 500;
+    padding: 5px 0px;
+    border-radius: 10px;
+    border: 1.5px solid black;
+    box-sizing: border-box;
+}
+.InputOption:hover {
+    background-color: #eee;
+
+}
+.InputOption:focus {
+    background-color: #fff;
+    border: 3px solid black;
+    outline: none;
+}
+
+
+
+
+/* -------------------- CHECKBOX ------------------*/
+
+.SelectGenContainer {
+    grid-area: gnsel;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.ChooseGenText {
+         
+    display: inline-block;
+    font-size: 160%;
+    font-weight: 800;
+    padding: 5px 10px;
+
+}
+
+.PlayText {
+    display: inline-block;
+    font-size: 120%;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 2px solid black;
+    cursor: pointer;
+    background-color: rgb(33, 150, 243);
+}
+.PlayText:hover{
+    background-color: #86c6f6;
+
+}
+.PlayText:focus{
+    background-color: #86c6f6;
+    border: 4px solid black;
+    outline: none;
+}
+
+.SelectBoxes {
+    width: auto;
+    margin: 0 auto;
+    margin-top: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.GenLabelContainer{
+    width: 45%;
+    box-sizing: border-box;
+    margin: 10px 2.5%;
+
+
+}
+.Label {
+    width: auto;
+    cursor: pointer;
+    font-size: 22px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 0 5px;
+    padding-top: 10px;
+    background-color: #ddd;
+    display: flex;
+    display:inline-block;
+    box-sizing: border-box;
+    justify-content: center;
+}
+.Label:hover{
+    background-color: #eee;
+}
+.Label:focus{
+    background-color: rgb(240, 240, 240);
+    border: 4px solid black;
+    outline: none;
+}
+
+
+.PokeSmallSprite {
+    width: 64px;
+    height: auto;
+    position: relative;
+    bottom: 6px;
+    margin: 0 2px;
+}
+
+
+
+.Container:hover {
+background-color: #ccc;
+
+}
+  
+@media (min-width: 851px) {
+    .WhoIsThatContainer {
+
+        grid-template-areas:
+        "score score title title title title title title title title result result"
+        "image image image image image image image image image image image image"
+        "guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt "
+        "optns optns optns optns optns optns optns optns optns optns optns optns"
+        "none none playBut playBut playBut playBut chosBut chosBut chosBut chosBut none2 none2 "
+        "gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel"
+
+    }
+
+    .GuessTextContainer {
+        margin: 15px auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .OptionsList {
+        margin: 0;
+    }
+    .GenLabelContainer {
+        width: 28%;
+    }
+    .PlayText{
+        width: 280px;
+        margin: 15px auto 15px auto;
+    }
+    .WhoIsThatTextContainer {
+        width: 80%;
+    }
+    .ScoreNumber {
+        width: 50%;   
+    }
+    
+    .ImageBlock {
+        /* max-width: 780px; */
+        box-sizing: border-box;
+
+    }
+    .PokeSmallSprite {
+        width: 128px;
+    }
+    
+    .OptionsList {
+        display: flex;
+        flex-flow: row wrap;
+        background-color: #aaa;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    .InputOption {
+        width: 22.5%;
+        box-sizing: border-box;
+        margin: 2px 1.25%;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .GenLabelContainer {
+        width: 20%;
+    }
+    .PokeSmallSprite {
+        width: 128px;
+    }
+    .ImageBlock{
+        width: 60%;
+    }
+    .GuessTextContainer {
+        width: 60%;
+    }
+}

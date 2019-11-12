@@ -1,0 +1,110 @@
+.FeaturesContainer {
+    margin: 0 auto 20px auto;
+    width: 100%;
+}
+
+.FeatureCards {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 20px auto;
+}
+
+.WhoIsThatPokemonLogo {
+    margin: 0 auto;
+}
+
+.FeatureText {
+    font-weight: 500;
+}
+
+.WhoIsThatPokemonCard {
+    margin: 5px auto;
+    width: 110px;
+    width: 40%;
+
+    border-radius: 10px;
+    padding: 15px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
+.WhoIsThatPokemonCard img {
+    width: 100%;
+    margin-top: 1px;
+    margin-bottom: 0px;
+}
+
+.PokedexCard {
+    margin: 5px auto;
+    width: 110px;
+    width: 40%;
+
+    border-radius: 10px;
+    padding: 15px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+
+}
+
+
+.PokedexCard img {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.WhoIsThatPokemon {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+
+}
+
+.WhoIsThatPokeContainer{
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.WhoIsThatPoke{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    margin: 0 auto;
+    filter: brightness(0);
+    width: 40%;
+}
+
+@media (min-width: 420px) {
+
+    .FeatureCards {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+
+    .PokedexCard{
+        box-sizing: border-box;
+        width: 35%;
+        margin: 0 20px;
+    }
+    .WhoIsThatPokemonCard {
+        box-sizing: border-box;
+        width: 35%;
+        margin: 0 20px;
+    }
+    .WhoIsThatPokemonCard img {
+        padding-bottom: 3px ;
+    }
+}
+
+@media (min-width: 992px) {
+    .FeatureCards {
+        margin-top: 4%;
+    }
+    .FeatureText {
+        font-size: 140%;
+    }
+}

@@ -1,0 +1,44 @@
+.TypesContainer {
+    margin: 0px auto 0px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+
+.PokemonDamageRelations {
+    border-radius: 40px;
+    padding: 25px;
+    background-image:  url("https://megadexter.com/ui/dex/assets/bg/bgpk.png");
+    background-color: #cccccc;
+    border: 2px solid black;
+    
+}
+
+.DamageRelationCategory{
+    border: 1px solid brown;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 10px;
+    background-image:  url("https://megadexter.com/ui/manifiesto/assets/bg/white.png");
+
+}
+
+.DamageCategoryTitle {
+    margin: 0 auto;
+    font-weight: 600;
+}
+
+
+@media (min-width: 768px) {
+.PokemonDamageRelationsContainer {
+    grid-area: dmgRel;
+}
+}
+
+@media (min-width: 992px) {
+    .PokemonDamageRelationsContainer {
+        margin:0 auto;
+        width: 95%;;
+    }
+}

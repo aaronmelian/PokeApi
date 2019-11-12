@@ -1,0 +1,71 @@
+.PokemonEvolutionChain {
+    display: flex;
+    flex-flow: column;
+    background: #fff url("https://assets.pokemon.com/static2/_ui/img/chrome/body_gray_bg.png");
+    justify-content: center;
+    margin: 0px auto;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 40px; 
+}
+
+.PreContainer, .MiddleContainer, .PostContainer {
+    /* transform: scale(0.7); Igual que: scaleX(0.7) scaleY(0.7) */
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.EvolutionCard {
+    margin: 20px 5px 20px 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.PokeName {
+    font-family: sans-serif;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin: 5px;
+    padding: 5px 0px;
+    font-size: 115%;
+
+}
+
+
+.ArrowDown {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    border: solid black;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    color: white;
+}
+
+.ArrowMargins {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+    
+@media (min-width: 768px) {
+.PokemonEvolutionChain {
+    grid-area: evolu;
+}
+}
+
+
+@media (min-width: 992px) {
+    .PokemonEvolutionChain {
+        margin:0 auto;
+        width: 95%;
+    }
+    }

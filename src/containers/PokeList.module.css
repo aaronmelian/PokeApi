@@ -1,0 +1,166 @@
+.Body {
+    background-color: white;
+    align-content: center;
+}
+
+.PokeList {
+    width: 85%;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+
+}
+
+.PageButtons{
+    margin: 5px auto;
+}
+
+.PokemonDetails {
+    width: 85%;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
+@media (min-width: 768px) {
+.PokemonDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    
+    grid-template-areas:
+    "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
+    "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
+    "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
+    "card   card   card   card   card   card   measu   measu   measu   measu   measu   measu "
+    "card   card   card   card   card   card   measu   measu   measu   measu   measu   measu "
+    "buttn  buttn  buttn  buttn  buttn  buttn  buttn   buttn   buttn   buttn   buttn   buttn "
+    "dmgRel dmgRel dmgRel dmgRel dmgRel dmgRel dmgRel  dmgRel  dmgRel  dmgRel  dmgRel  dmgRel"
+    "sprite sprite sprite sprite sprite sprite sprite  sprite  sprite  sprite  sprite  sprite"
+    "evolu  evolu  evolu  evolu  evolu  evolu  evolu   evolu   evolu   evolu   evolu   evolu "
+
+}
+
+}
+
+@media (min-width: 992px) {
+.PokeList {
+    flex-flow: row wrap;
+    align-items: flex-start;
+}
+
+    .PokemonDetails {
+
+        grid-template-areas:
+        "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
+        "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
+        "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
+        "card   card   card   card   card   card   measu   measu   measu   measu   measu   measu "
+        "card   card   card   card   card   card   measu   measu   measu   measu   measu   measu "
+        "buttn  buttn  buttn  buttn  buttn  buttn  buttn   buttn   buttn   buttn   buttn   buttn "
+        "sprite sprite sprite sprite sprite sprite sprite  sprite  sprite  sprite  sprite  sprite"
+        "evolu  evolu  evolu  evolu  evolu  evolu  dmgRel  dmgRel  dmgRel  dmgRel  dmgRel  dmgRel ";
+
+       
+    }
+}
+
+
+.bug {
+    background-color: #A6B91A;
+    color: #fff;
+}
+
+.dark{
+    background-color: #705746;
+    color: #fff;
+}
+
+.dragon {
+    background-color: #6F35FC;
+    color: #fff;
+}
+
+.electric {
+    background-color: #F7D02C;
+    color: #fff;
+}
+
+.fairy {
+    background-color: #D685AD;
+    color: #fff;
+}
+
+.fighting {
+    background-color: #C22E28;
+    color: #fff;
+}
+
+.fire {
+    background-color: #EE8130;
+    color: #fff;
+}
+
+.flying {
+    background-color: #A98FF3;
+    color: #fff;
+
+}
+
+.ghost {
+    background-color: #735797;
+    color: #fff;
+}
+
+.grass {
+    background-color: #7AC74C;
+    color: #fff;
+}
+
+.ground{
+    background-color: #E2BF65;
+    color: #fff;
+
+}
+
+.ice{
+    background-color: #96D9D6;
+    color: #fff;
+
+}
+
+.normal {
+    background-color: #A8A77A;
+    color: #fff;
+
+}
+
+.poison {
+    background-color: #A33EA1;
+    color: #fff;
+}
+
+.psychic {
+    background-color: #F95587;
+    color: #fff;
+}
+
+.rock {
+    background-color: #B6A136;
+    color: #fff;
+}
+
+.steel {
+    background-color: #B7B7CE;
+    color: #fff;
+
+}
+
+.water {
+    background-color: #6390F0;
+    color: #fff;
+} 

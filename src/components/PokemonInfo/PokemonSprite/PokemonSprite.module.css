@@ -1,0 +1,13 @@
+.SpritesContainer {
+    border: 1px solid #c5c5c5;
+    background-color: #c5c5c5;
+    border-radius: 50%;
+    width: 100%;
+    cursor: pointer;
+
+}
+
+img {
+    max-width:100%;
+    height:auto;
+}

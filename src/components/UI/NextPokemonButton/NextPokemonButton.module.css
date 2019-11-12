@@ -1,0 +1,78 @@
+.ButtonContainer {
+    margin:0 auto;
+    padding: 0;
+
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+
+}
+
+ul li {
+    list-style: none;
+    width: 60px;
+    display: inline-flex;
+    height: 60px;
+    background: #262626;
+    margin: 0 10px;
+    border-radius: 30%;
+    transition: .5s;
+    cursor: pointer;
+} ul li:hover {
+    background: #0070ff
+}
+
+ul li div {
+    width: 20px;
+    height: 20px;
+    border: 4px solid #fff;
+    transition: 0.5s;
+    display:flex
+}
+
+.Button div {
+    position: relative;
+    top: 50%;
+    left: 35%;
+    transform: translateY(-50%) rotate(-45deg);
+    border-left: none;
+    border-top: none;
+
+}
+
+.Button div:before {
+    content: '';
+    position: absolute;
+    width: 38px;
+    height: 4px;
+    background: #fff;
+    transform: translate(0,17px) rotate(45deg) scale(0);
+    transition: 0.5s
+}
+
+.Button:hover div {
+    transform: translate(4px,-12px) rotate(-45deg);
+}
+
+.Button:hover div:before {
+    transform: translate(-10px,7px) rotate(45deg) scale(1);
+}
+
+
+.Prev{
+    transform: rotate(180deg)
+}
+
+@media (min-width: 768px) {
+.ButtonContainer {
+    grid-area: buttn;
+    margin-bottom: 30px;
+}
+}
+
+
+
+
+

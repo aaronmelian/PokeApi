@@ -1,0 +1,93 @@
+.PokemonCard {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    margin: 20px auto;
+    
+} 
+
+.PokeSpriteContainer {
+    background-color: #F2F2F2 ;
+    border-radius: 5px;
+
+
+}
+.PokeSpriteContainer:hover {
+	animation: bounce 1.5s;
+} 
+
+.PokeSprite {
+ 
+    width: 98%;
+    height:auto;
+    filter: drop-shadow(4px 8px 3px rgba(0, 0, 0, 0.7));
+}
+
+.PokeNameAndSprite {
+    display: flex;
+    align-items: center;
+    height: 25px;;
+}
+
+.PokeSmallSprite {
+    max-width:100%;
+    height:auto;
+    position: relative;
+    bottom: 3px;
+}
+
+.PokemonCard .PokeName {
+    text-align: left;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    bottom: 15px;
+    font-family: sans-serif;
+    color: #3d3d3d;
+    margin: 0px 5px;
+    font-size: 115%;
+}
+
+.IdAndTypeContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.TypeIcon {
+    max-height: 21px;
+    margin: 2px 2px auto auto;
+}
+
+.PokemonNumber {
+    text-align: left;
+    margin: 0px 5px;
+    margin-bottom: 10px;
+
+    font-weight: 500;
+    color: #919191;
+
+}
+
+
+@keyframes bounce {
+	60%{
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	20% {
+		-webkit-transform: translateY(-8px);
+		transform: translateY(-8px);
+	}
+
+}
+
+
+@media (min-width: 992px) {
+    .PokemonCard {
+        width: 18%;
+    }
+
+}
+    

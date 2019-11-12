@@ -1,0 +1,22 @@
+.SearchContainer {
+    display: flex;
+    margin: auto auto;
+}
+
+.SearchContainer p {
+    margin: 0;
+    cursor: pointer;
+    background-color: rgb(194, 194, 194);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.SearchContainer p:hover {
+    background-color: #ddd;
+
+}
+
+.SearchContainer p i {
+    margin-top: 4px;
+    width: 32px;
+}
+

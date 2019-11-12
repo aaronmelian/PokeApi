@@ -1,0 +1,78 @@
+.PokemonIngameSprites {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    border: 2px solid black;
+    border-radius:  40px;
+    background:  url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
+    background-color: #a4a4a4; 
+    overflow: hidden;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 15px 5px;
+    box-sizing: border-box;
+
+}
+
+.SpriteContainer {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.Sprite {
+    width: 100%;
+    height: auto;
+}
+
+.FixingCont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Name {
+    text-transform: capitalize;
+    margin: 0 0 10px 0;
+    position: relative;
+
+    bottom: 20px;
+    font-size: 150%;
+    font-weight: 800;
+
+    
+}
+
+@media (min-width: 768px) {
+.PokemonIngameSpritesContainer {
+    grid-area: sprite;
+
+}
+}
+
+@media (min-width: 992px) {
+    .PokemonIngameSpritesContainer {
+        width: 97.5%;
+        margin: 0px auto;
+
+    }
+    .PokemonIngameSprites {
+        margin: 20px auto;
+    }
+    .TitlesTop {
+        display: none;
+    }
+    .TitlesBottom {
+        display: none;
+    }
+    .SpriteContainer {
+        width: 25%;
+    }
+    .Sprite{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .Name {
+        bottom: 30px;
+    }
+}

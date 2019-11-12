@@ -1,0 +1,43 @@
+.SmallPokePagination{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.MediumPokePagination{
+    display: none;
+}
+
+.PageContainer {
+    padding: 2px 0;
+    padding-top: 4px;
+
+    cursor: pointer;
+    margin: 2px;
+    width: 30px;
+    background-color:rgb(172, 172, 172);
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+.PageContainer:hover {
+    background-color: #ddd;
+    
+}
+
+.PageArrow {
+    margin: auto;
+
+}
+
+@media (min-width: 576px) {
+    .MediumPokePagination{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    .SmallPokePagination{
+        display: none;
+    }
+}

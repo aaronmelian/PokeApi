@@ -1,0 +1,103 @@
+.PokemonDetailCardContainer {
+    margin: 125px 0 30px 0;
+}
+
+.PokeHatchContainer img {
+    width: 200px;
+}
+
+
+.Card {
+    width: 250px;
+    display: flex;
+    flex-flow: column;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+    transition: all 0.4s;
+    position: relative;
+    margin: 0px auto;
+
+}
+
+.Frame {
+    box-sizing: border-box;
+}
+
+.PokeSpriteContainer {
+    
+    width: 200px;
+    margin: 0 auto;
+    padding: 0;
+    background: white;
+    border-radius: 50%;
+    margin-top: -40%;
+
+}
+
+
+.PokeSprite {
+    filter: drop-shadow(4px 8px 3px rgba(0, 0, 0, 0.7));
+}
+
+.TextBox{
+    box-sizing: border-box;
+    padding: 0 auto;
+}
+
+.PokemonId {
+    width: 60px;
+    font-weight: 600;
+    border-radius: 100px;
+    background: white;
+    border: 2px solid white;
+    margin: 20px auto 0 auto;
+}
+
+.PokemonName {
+    text-transform: capitalize;
+    font-size: 26px;
+    margin: 5px 0 15px 0;
+    line-height: 1;
+    color: white;
+}
+
+.StatsContainer {
+    width: 225px;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 15px auto 12.5px auto;
+    background: white;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding-top: 20px;
+
+}
+
+.Stat {
+    width: 33%;
+    margin-bottom: 20px;
+}
+
+.StatName {
+    margin: 0;
+    font-weight: 600;
+}
+
+.StatNumber {
+    margin: 5px;
+    font-weight: 600;
+
+}
+
+
+@media (min-width: 768px) {
+
+.PokemonDetailCardContainer {
+    grid-area: card;
+}
+}
+

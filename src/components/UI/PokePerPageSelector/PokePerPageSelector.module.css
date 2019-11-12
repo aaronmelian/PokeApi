@@ -1,0 +1,106 @@
+.Box {
+ width: 90%;
+ left: 0;
+ margin: 0 auto;
+ box-sizing: border-box;
+ padding: 20px 0;
+}
+
+.SelecBoxContainer {
+    height: 30px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.SelectBoxSelectedItem {
+    height: 100%;
+    align-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid #ddd;
+}
+
+.SelectBoxSelectedItem p {
+    width: 100%;
+    margin: 0;
+}
+
+.SelectBoxArrow {
+    width: 35px;
+    margin: 0;
+    padding: 0;
+    background: #aaa;
+    box-sizing: border-box;
+}
+
+.Options {
+    display: flex;
+    justify-content: center;
+    width: 175px;   
+    margin: 0 auto;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-width: 2px  0   0  2px;
+    cursor: pointer;
+}
+
+.Options div {
+    border: 1px solid #ddd;
+    padding: 6px;
+    width: 35px;
+    box-sizing: border-box;
+    border-width:  0 2px 2px 0;
+}
+
+.Options div:hover {
+    background-color: rgb(172, 160, 160);
+}
+
+.OptionsText {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.Selected {
+    background-color:aquamarine;
+}
+
+
+.SelectBoxArrowDown {
+    position: relative;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent; 
+    border-right: 8px solid transparent;
+    border-top: 10px solid #fff;
+    box-sizing: border-box;
+}
+
+.SelectBoxArrowUp {
+    position: relative;
+    bottom: 12px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent; 
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid #fff;
+    box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+  
+    .SelecBoxContainer {
+    width: 20%;
+   
+    }
+  
+}
