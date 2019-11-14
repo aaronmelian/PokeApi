@@ -3,6 +3,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import classes from './NavBar.module.css';
 import NavBarSearchIcon from '../NavBarSearchIcon/NavBarSearchIcon';
 import Backdrop from '../Backdrop/Backdrop'
+import homeIcon from '../../images/homeIcon.svg'
 
 
 const NavBar = (props) => {
@@ -71,7 +72,7 @@ const NavBar = (props) => {
                 <div className={classes.NavBar}>
 
                     <div className={classes.NavBarSection1}>
-                        <img className={classes.PokeIcon} onClick={props.homeIconClicked} src="https://img.icons8.com/ios/50/000000/instinct-pokemon.png"/>
+                        <img className={classes.PokeIcon} onClick={props.homeIconClicked} src={homeIcon}/>
                     </div>
 
                     <div className={classes.NavBarSection2}>
