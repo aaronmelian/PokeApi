@@ -371,9 +371,6 @@ class PokeList extends Component {
 
   
     render() {
-        console.log('GIT TEST')
-        
-
 
         let newPokemonList = []
         if (!this.state.showingType) {

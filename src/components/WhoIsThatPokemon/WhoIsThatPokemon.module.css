@@ -7,7 +7,7 @@
     display: grid;
     grid-column-gap: 10px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto;
 
     grid-template-areas:
     "score score score title title title title title title result result result"
@@ -16,7 +16,7 @@
     "optns  optns  optns  optns optns optns optns optns optns optns optns  optns "
     "chosBut chosBut  chosBut  chosBut chosBut chosBut playBut playBut playBut playBut playBut  playBut"
     "gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel"
-
+    "share share share share share share share share share share share share"
 
 }
 
@@ -290,7 +290,37 @@
     outline: none;
 }
 
+.SharingContainer{
+    display: flex;
+    grid-area: share;
+    margin: 0 auto;
+    align-items: center;
 
+}
+
+.TwitterLogoContainer {
+    margin: 0 5px;
+    display: flex;
+    height: 64px;
+}
+
+.TwitterLogo {
+    cursor: pointer;
+    width: 64px;
+    min-width: 64px;
+}
+
+.FacebookLogoContainer {
+    margin: 0 5px;
+    display: flex;
+    height: 64px;
+}
+
+.FacebookLogo {
+    cursor: pointer;
+    width: 64px;
+    min-width: 64px;
+}
 
 
 /* -------------------- CHECKBOX ------------------*/
@@ -391,13 +421,13 @@ background-color: #ccc;
     .WhoIsThatContainer {
 
         grid-template-areas:
-        "score score title title title title title title title title result result"
-        "image image image image image image image image image image image image"
-        "guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt "
-        "optns optns optns optns optns optns optns optns optns optns optns optns"
-        "none none playBut playBut playBut playBut chosBut chosBut chosBut chosBut none2 none2 "
-        "gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel"
-
+        "score    score    title    title    title    title    title    title    title    title    result   result"
+        "image    image    image    image    image    image    image    image    image    image    image    image"
+        "guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt"
+        "optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns"
+        "none     none     playBut  playBut  share  share    share    share  chosBut  chosBut  none2    none2 "
+        "gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel"
+    
     }
 
     .GuessTextContainer {

@@ -9,6 +9,9 @@ import gen5Names from './gen5Names.json';
 import gen6Names from './gen6Names.json';
 import gen7Names from './gen7Names.json';
 
+import twitterLogo from './twitterLogo.png'
+import facebookLogo from './facebookLogo.png'
+
 
 const WhoIsThatPokemon = (props) => {
 
@@ -34,6 +37,9 @@ const WhoIsThatPokemon = (props) => {
     const [selectingGen, setSelectingGen] = useState(true);
 
     const [noGenSelected, setNoGenSelected] = useState(false);
+
+    const [tweetText, setTweetText] = useState(false);
+
 
     const [gen1, setGen1] = useState(false);
     const [gen2, setGen2] = useState(false);
@@ -99,6 +105,52 @@ const WhoIsThatPokemon = (props) => {
             setNoGenSelected(false);
         }
     }, [gen1, gen2, gen3, gen4, gen5, gen6, gen7]);
+
+
+
+    useEffect(() => {
+
+        let generationText;
+
+        const gen1text = gen1 ? 1 : null
+        const gen2text = gen2 ? 2 : null
+        const gen3text = gen3 ? 3 : null
+        const gen4text = gen4 ? 4 : null
+        const gen5text = gen5 ? 5 : null
+        const gen6text = gen6 ? 6 : null
+        const gen7text = gen7 ? 7 : null
+
+        const generations = [gen1text, gen2text, gen3text, gen4text, gen5text, gen6text, gen7text]
+        
+        const genList = generations.filter(gen => gen > 0);
+        if (genList.length === 1) {
+            generationText = `Gen ${genList[0]}`
+        } else {
+
+            let someGenText = [];
+
+            genList.forEach((gen,i) => {
+
+                if (i === genList.length-1) {
+                    someGenText.push(` and ${gen}`)
+                    
+                } else {
+                    someGenText.push(` ${gen}`)
+                }
+
+                someGenText.join('')
+            })
+
+            generationText = `Generations${someGenText}`
+        }
+
+        let scoreText = score === maxScore ? `all ${score}` : `${score}`
+        let numberOfPoke = score === maxScore ? '' : ` ( ${maxScore} Pokemon ).`
+        let tweet = `I just guessed ${scoreText} pokemon from ${generationText}!${numberOfPoke} How many will you guess?`
+        
+        setTweetText(tweet)
+        
+    }, [gameOver, gameWon]);
     
     const setGame = () => {
 
@@ -139,7 +191,7 @@ const WhoIsThatPokemon = (props) => {
                 pokemonArray.push(i)
             }
         };
-        // console.log(pokemonArray)
+
         if (typeof pokemonArray !== 'undefined' && pokemonArray.length > 0) {
             assignNewPokemon(pokemonArray);
             setMaxScore(pokemonArray.length + 1);
@@ -168,7 +220,7 @@ const WhoIsThatPokemon = (props) => {
         let imgStyle = {transition: 'none', filter: 'brightness(0)'};
         
         let resp = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=' + offset + '&limit=' + 1);
-        console.log(resp.data.results[0].name.split('-')[0], randomPokeId)
+        // console.log(resp.data.results[0].name.split('-')[0], randomPokeId)
         setPokeToGuess(resp.data.results[0].name.split('-')[0])
         setPokeToGuessId(chosenPokeId);
         setBrightStyle(imgStyle)
@@ -303,6 +355,8 @@ const WhoIsThatPokemon = (props) => {
 
     }
 
+
+    
     return(
         <div className={classes.WhoIsThatContainerBackGround}>
 
@@ -408,6 +462,29 @@ const WhoIsThatPokemon = (props) => {
                             <button className={classes.PlayAgainButton} tabIndex={0} onClick={(event) => playAgainHandler()}>
                                 Play Again?
                             </button>
+                            
+                : null }
+
+                { (gameOver || gameWon) && !selectingGen ?
+
+                <div className={classes.SharingContainer}>
+
+                    <div className={classes.TwitterLogoContainer} onClick={() => {
+                        window.open(`https://twitter.com/share?text=${tweetText}&screen_name=pokemon_api&url=https://pokeapi-pokedex.firebaseapp.com/`, 'Twitter', 'height=285,width=550,resizable=1')
+                        }}
+                    >
+                        <img className={classes.TwitterLogo} src={twitterLogo}/>
+                    </div>
+
+                    <div className={classes.FacebookLogoContainer} onClick={() => {
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpokeapi-pokedex.firebaseapp.com%2F&amp;src=sdkpreparse`, 'Facebook', 'height=285,width=550,resizable=1')
+                        }}
+                    >
+                        <img className={classes.FacebookLogo} src={facebookLogo}/>
+                    </div>
+
+                </div>
+
                 : null }
                 
                 { (gameOver || gameWon) && !selectingGen ?
