@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import {TwitterTimelineEmbed} from 'react-twitter-embed';
 import classes from './WhoIsThatPokemon.module.css';
 import axios from 'axios';
 import gen1Names from './gen1Names.json';
@@ -86,10 +87,14 @@ const WhoIsThatPokemon = (props) => {
     }
 
     const chooseGenHandler = () => {
+        
         setPokeToGuess(null);
         setMatchedNames(null);
         setInputBuffer('');
         setSelectingGen(false);
+        
+
+
 
         if(selectingGen) {
             playAgainHandler()
@@ -105,6 +110,10 @@ const WhoIsThatPokemon = (props) => {
             setNoGenSelected(false);
         }
     }, [gen1, gen2, gen3, gen4, gen5, gen6, gen7]);
+    
+    useEffect(() => {
+        console.log(matchedNames)
+    });
 
 
 
@@ -394,6 +403,16 @@ const WhoIsThatPokemon = (props) => {
 
                 </div>
                 
+                {gameOver || gameWon || (window.innerWidth >= 992 && !selectingGen)? 
+                <div className={classes.TwitterTimeline}>
+                    <TwitterTimelineEmbed
+                        sourceType="profile"
+                        screenName="pokemon_api"
+                        options={{height: "100%", width: 850}}
+                    />
+                </div>
+                :null}
+                
 
                 <div className={classes.ScoreBoardContainer}>
                     <div className={classes.ScoreBoard}>
@@ -488,7 +507,7 @@ const WhoIsThatPokemon = (props) => {
                 : null }
                 
                 { (gameOver || gameWon) && !selectingGen ?
-                            <button className={classes.ChooseGenButton} tabIndex={0} onClick={() => {setSelectingGen(true); setGuessed('toBe'); setScore(0)} }>
+                            <button className={classes.ChooseGenButton} tabIndex={0} onClick={() => {setGameOver(false); setGameWon(false); setSelectingGen(true); setGuessed('toBe'); setScore(0)} }>
                                 Choose Gen?
                             </button>
                 : null }

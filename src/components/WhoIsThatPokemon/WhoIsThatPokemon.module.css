@@ -17,7 +17,18 @@
     "chosBut chosBut  chosBut  chosBut chosBut chosBut playBut playBut playBut playBut playBut  playBut"
     "gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel"
     "share share share share share share share share share share share share"
+    "timeL timeL timeL timeL timeL timeL timeL timeL timeL timeL timeL timeL"
 
+}
+
+.TwitterTimeline {
+    width: 100%;
+    display: flex;
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 10px;
+    grid-area: timeL;
+    margin: 15px auto;
 }
 
 .WhoIsThatTextContainer {
@@ -58,7 +69,7 @@
     border-radius: 10px;
     width: 100%;
     border: 2px solid black;
-
+    box-sizing: border-box;
 
     height: auto;
 
@@ -322,7 +333,6 @@
     min-width: 64px;
 }
 
-
 /* -------------------- CHECKBOX ------------------*/
 
 .SelectGenContainer {
@@ -425,9 +435,10 @@ background-color: #ccc;
         "image    image    image    image    image    image    image    image    image    image    image    image"
         "guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt"
         "optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns"
-        "none     none     playBut  playBut  share  share    share    share  chosBut  chosBut  none2    none2 "
+        "none     none     playBut  playBut  share    share    share    share  chosBut  chosBut    none2    none2 "
         "gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel"
-    
+        "timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL";
+
     }
 
     .GuessTextContainer {
@@ -447,7 +458,7 @@ background-color: #ccc;
         margin: 15px auto 15px auto;
     }
     .WhoIsThatTextContainer {
-        width: 80%;
+        width: 90%;
     }
     .ScoreNumber {
         width: 50%;   
@@ -480,6 +491,17 @@ background-color: #ccc;
 }
 
 @media (min-width: 992px) {
+    .WhoIsThatContainer {
+
+        grid-template-areas:
+        "score    score    title    title    title    title    title    title    title    title    result   result"
+        "none3    none3    image    image    image    image    image    image    image    image    timeL    timeL"
+        "none3    none3    guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt timeL    timeL"
+        "optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns"
+        "none     none     playBut  playBut  share    share    share    share    chosBut  chosBut  none2    none2 "
+        "gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel";
+
+    }
     .GenLabelContainer {
         width: 20%;
     }
@@ -487,9 +509,16 @@ background-color: #ccc;
         width: 128px;
     }
     .ImageBlock{
-        width: 60%;
+        width: 90%;
     }
     .GuessTextContainer {
-        width: 60%;
+        width: 90%;
     }
+    
+    .TwitterTimeline {
+        margin: 0;
+        margin-bottom: 15px;
+    }
+   
 }
+
