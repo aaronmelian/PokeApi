@@ -111,8 +111,6 @@ const WhoIsThatPokemon = (props) => {
         
     }
     
-   
-
     useEffect(() => {
         if(!gen1 && !gen2 && !gen3 && !gen4 && !gen5 && !gen6 && !gen7) {
             setPokeToGuess(null);
@@ -257,19 +255,28 @@ const WhoIsThatPokemon = (props) => {
         let pokesToPick = pokemonArray ? pokemonArray : randomPokes
 
         let randomPokeId = Math.floor(Math.random() * (pokesToPick.length)) + 1;
+
         let pokeToSplice = randomPokeId-1
         let chosenPokeId = pokesToPick[randomPokeId - 1];
+
+        let spriteId = chosenPokeId.toString()
+        while (spriteId.length < 3) {
+            spriteId = '0' + spriteId;
+        }
 
         pokesToPick.splice(pokeToSplice, 1);
         setRandomPokes([...pokesToPick]);
 
-        let offset = chosenPokeId -1;
+        let offset = (chosenPokeId -1);
+        
+       
+
         let imgStyle = {transition: 'none', filter: 'brightness(0)'};
         
         let resp = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=' + offset + '&limit=' + 1);
         // console.log(resp.data.results[0].name.split('-')[0], randomPokeId)
         setPokeToGuess(resp.data.results[0].name.split('-')[0])
-        setPokeToGuessId(chosenPokeId);
+        setPokeToGuessId(spriteId);
         setBrightStyle(imgStyle)
         setShowImage(true)
         inputRef.current.focus()
@@ -512,12 +519,13 @@ const WhoIsThatPokemon = (props) => {
 
                 <div className={classes.ImageBlock}>
 
-                    {pokeToGuess && !selectingGen ?
+                    {!selectingGen ?
                         <div className={classes.WhoIsThatPokeContainer}>
                             <img className={classes.WhoIsThatPokeBackground} src={'https://external-preview.redd.it/e5zoQw-hgw-LCjdhC_4G8IAcHxex5pzda_BD_FPTcBY.png?width=960&crop=smart&auto=webp&s=23f9df250a8fe74763c3ba7cb8e46421e63cba2d'}/>
                             
                             {showImage ? 
-                                <img className={classes.WhoIsThatPoke} style={brightStyle} src={'https://pokeres.bastionbot.org/images/pokemon/' + pokeToGuessId + '.png'}/>
+                                // <img className={classes.WhoIsThatPoke} style={brightStyle} src={'https://pokeres.bastionbot.org/images/pokemon/' + pokeToGuessId + '.png'}/>
+                                <img className={classes.WhoIsThatPoke} style={brightStyle} src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' + pokeToGuessId + '.png'}/>
                             : null}
 
                             { gameOver ?

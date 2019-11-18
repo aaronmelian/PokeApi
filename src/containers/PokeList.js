@@ -68,7 +68,6 @@ class PokeList extends Component {
 
             showSpinner: false,
             
-            showingType: null,
             allPokeFromType: null,
 
             pokemon: null,
@@ -162,7 +161,6 @@ class PokeList extends Component {
     }
 
     typeClickedHandler (type) {
-
         this.setState({showingType: type, selectedPokemon: null, pokemon: null, showSpinner:true, pokePage: 1})
         axios.get(`https://pokeapi.co/api/v2/type/${type}/`)
         .then(response => {
@@ -379,7 +377,6 @@ class PokeList extends Component {
 
   
     render() {
-    
         let newPokemonList = []
         if (!this.state.showingType) {
             newPokemonList = this.state.pokemon && this.state.pokemon
@@ -401,7 +398,6 @@ class PokeList extends Component {
             });
         } else {
                             ///// Display Pokemon Per Type /////
-
             newPokemonList = this.state.pokemon && this.state.pokemon
             .map(poke => {
                 const pokemonIndex = poke.pokemon.url.split('/')[poke.pokemon.url.split('/').length-2];
@@ -414,12 +410,12 @@ class PokeList extends Component {
                         clicked={() => this.pokemonClickedHandler(poke.pokemon.url)}
                         dexNumber={pokemonIndex}
                         showingType={this.state.showingType}
+                        lastPokemon={this.state.lastPokeEver}
                     /> 
             
                 )
 
             });
-
         }
 
         let pokeDex = <Spinner/>
@@ -463,8 +459,6 @@ class PokeList extends Component {
                     
                 </div>
                 :null}
-
-
 
                 {this.state.selectedPokemon ? 
 
@@ -548,10 +542,6 @@ class PokeList extends Component {
                 {this.state.showPokedex ?
                     <div>{pokeDex}</div>
                 :null}
-
-                
-
-                
 
             </div>
         )

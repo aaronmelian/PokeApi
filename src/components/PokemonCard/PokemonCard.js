@@ -4,7 +4,6 @@ import ProgressiveImage from '../UI/ProgressiveImage/ProgressiveImage'
 
 const PokemonCard = (props) => {
     
-    let dexNumber = props.dexNumber
     let spriteId = '' + props.dexNumber;
     while (spriteId.length < 3) {
         spriteId = '0' + spriteId;
@@ -89,11 +88,12 @@ const PokemonCard = (props) => {
     }
 
 
+    console.log(props.dexNumber)    
+    console.log(props.lastPokemon)    
 
 
     return (
-
-        dexNumber <= props.lastPokemon ?
+        props.dexNumber <= props.lastPokemon ?
 
         <div className={classes.PokemonCard} onClick={props.clicked} style={props.showCursor ? {cursor: 'pointer'} : null}>
 
@@ -106,7 +106,6 @@ const PokemonCard = (props) => {
                     />
                 </div>
 
-                {/* <img alt={props.name} className={classes.PokeSprite} src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${spriteId}.png`} /> */}
             </div>
 
 
@@ -121,7 +120,6 @@ const PokemonCard = (props) => {
 
             <div className={classes.PokeNameAndSprite}>
                 
-                {/* <img alt={props.name} className={classes.PokeSmallSprite} src={`https://www.pkparaiso.com/imagenes/pokedex/sm-icons/${spriteId}.png`}/> */}
                 <div className={classes.PokeSmallSprite}>
                     <ProgressiveImage
                         image={`https://www.pkparaiso.com/imagenes/pokedex/sm-icons/${spriteId}.png`}
