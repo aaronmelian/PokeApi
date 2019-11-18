@@ -3,6 +3,10 @@
     align-content: center;
 }
 
+.Pokedex {
+    text-align: center;
+}
+
 .PokeList {
     width: 85%;
     margin: auto;

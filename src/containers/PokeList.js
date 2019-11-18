@@ -9,7 +9,6 @@ import classes2 from '../components/PokemonInfo/PokemonTypeLabel/PokemonTypeLabe
 import PokemonCard from '../components/PokemonCard/PokemonCard'
 
 import NavBar from '../components/UI/NavBar/NavBar'
-import Loading from '../components/UI/Loading/Loading'
 import PokemonFeatures from '../components/PokemonFeatures/PokemonFeatures'
 
 import PokePagination from '../components/UI/PokePagination/PokePagination'
@@ -25,6 +24,8 @@ import PokemonIngameSprites from '../components/PokemonInfo/PokemonIngameSprites
 import DexEntrie from '../components/PokemonInfo/DexEntrie/DexEntrie'
 import PokemonTypes from '../components/PokemonInfo/PokemonTypes/PokemonTypes'
 
+import WhoIsThatPokemon from '../components/WhoIsThatPokemon/WhoIsThatPokemon'
+
 
 
 class PokeList extends Component {
@@ -33,7 +34,6 @@ class PokeList extends Component {
         lastPokeEver: 807,
 
         showSpinner: false,
-        showLoading: false,
 
         pokemon: null,
         lastPokeOnList: 807,
@@ -59,15 +59,17 @@ class PokeList extends Component {
         searchDataError: null,
         showSearchInput: false,
 
-        showPokedex: null
-
+        showPokedex: null,
+        playingWhoIs: false
     }
     
     goHomeHandler() {
         this.setState({
 
             showSpinner: false,
+            
             showingType: null,
+            allPokeFromType: null,
 
             pokemon: null,
             pokePage: 0,
@@ -93,6 +95,8 @@ class PokeList extends Component {
             showSearchInput: false,
 
             showPokedex: null,
+            playingWhoIs: false
+
 
         });
     }
@@ -100,6 +104,10 @@ class PokeList extends Component {
     pokedexClickedHandler() {
         this.setState({showPokedex: true});
         this.nextPokemonPage(this.state.pokePerPage)
+    }
+
+    whoIsThatPokemonClickedHandler() {
+        this.setState({playingWhoIs: true});
     }
 
     pokemonPerPageHandler (numberPerPage) {
@@ -117,13 +125,14 @@ class PokeList extends Component {
 
     searchToggleHandler() {
 
-        this.setState({searchDataError: false})
+        this.setState({searchDataError: false}) ///Al cambiar
 
         if (this.state.showSearchInput) {
             this.setState({showSearchInput: false})
 
-        } else if (!this.state.showSearchInput) {
-            this.setState({showSearchInput: true})
+        }
+         else if (!this.state.showSearchInput) {
+            this.setState({showSearchInput: true}) ///Al cambiar
         }
     }
 
@@ -359,7 +368,6 @@ class PokeList extends Component {
         const evoIndex = pokemonId.target.src.split('/')[pokemonId.target.src.split('/').length-1].split('.')[0];
         let newEvoId = evoIndex.replace(/^0+/, '')
         let currentId = this.state.selectedPokemonId + ''
-        console.log(newEvoId, currentId)
 
         if (newEvoId === currentId) {
             return
@@ -371,7 +379,7 @@ class PokeList extends Component {
 
   
     render() {
-
+    
         let newPokemonList = []
         if (!this.state.showingType) {
             newPokemonList = this.state.pokemon && this.state.pokemon
@@ -385,6 +393,7 @@ class PokeList extends Component {
                         name={poke.name}
                         clicked={() => this.pokemonClickedHandler(poke.url)}
                         dexNumber={pokemonIndex}
+                        lastPokemon={this.state.lastPokeEver}
                     /> 
             
                 )
@@ -525,13 +534,14 @@ class PokeList extends Component {
                     homeIconClicked={() => this.goHomeHandler()}
                 />
 
-                {!this.state.showPokedex?
+                {this.state.playingWhoIs? <WhoIsThatPokemon/> : null}
+
+                {!this.state.showPokedex && !this.state.playingWhoIs?
                     <div>
-                        
                         <PokemonFeatures 
                             pokedexClicked={() => this.pokedexClickedHandler()}
+                            playWhoIsThatPokemon={()=> this.whoIsThatPokemonClickedHandler()}
                         />
-
                     </div>
                 : null}
 

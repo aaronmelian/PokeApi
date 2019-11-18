@@ -93,7 +93,7 @@ const PokemonCard = (props) => {
 
     return (
 
-        dexNumber <= 807 ?
+        dexNumber <= props.lastPokemon ?
 
         <div className={classes.PokemonCard} onClick={props.clicked} style={props.showCursor ? {cursor: 'pointer'} : null}>
 

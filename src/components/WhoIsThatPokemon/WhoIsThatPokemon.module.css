@@ -10,15 +10,84 @@
     grid-template-rows: auto auto auto auto auto auto auto;
 
     grid-template-areas:
-    "score score score title title title title title title result result result"
-    "image image image image image image image image image image image image"
-    "guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt  guessTxt  guessTxt  guessTxt"
-    "optns  optns  optns  optns optns optns optns optns optns optns optns  optns "
-    "chosBut chosBut  chosBut  chosBut chosBut chosBut playBut playBut playBut playBut playBut  playBut"
-    "gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel gnsel"
-    "share share share share share share share share share share share share"
-    "timeL timeL timeL timeL timeL timeL timeL timeL timeL timeL timeL timeL"
+    "score    score    score    title    title    title    title    title    title    result   result   result"
+    "image    image    image    image    image    image    image    image    image    image    image    image"
+    "guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt"
+    "optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns"
+    "chosBut  chosBut  chosBut  chosBut  chosBut  chosBut  playBut  playBut  playBut  playBut  playBut  playBut"
+    "gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel"
+    "saveBtt  saveBtt  saveBtt  saveBtt  saveBtt  saveBtt  saveBtt  saveBtt  saveBtt  saveBtt  saveBtt  saveBtt"
+    "topSc    topSc    topSc    topSc    topSc    topSc    topSc    topSc    topSc    topSc    topSc    topSc"
+    "timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL"
+    "share    share    share    share    share    share    share    share    share    share    share    share"
 
+}
+
+.SaveScoreButton {
+    height: 52px;
+    grid-area: saveBtt;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    background-color: rgb(33, 150, 243);
+    padding: 10px;
+    font-size: 150%;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.SaveScoreButton:hover{
+    background-color: #86c6f6;
+}
+.SaveScoreButton:focus{
+    background-color: #86c6f6;
+    outline: none;
+}
+
+.TopScores {
+    grid-area: topSc;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row;
+    overflow: scroll;
+    height: 80px;
+
+}
+
+.UserScoreContainer {
+    color: black;
+    padding: 6px 10px;
+    border-right: 1px solid black;
+    box-sizing: border-box;
+    background-color: cadetblue;
+    height: 100%;
+    font-size: 150%;
+
+}
+
+.UserScoreContainer:nth-child(2) {
+    background-color: #D6AF36;
+}
+.UserScoreContainer:nth-child(3) {
+    background-color: #A7A7AD;
+}
+.UserScoreContainer:nth-child(4) {
+    background-color: #A77044;
+}
+.UserScoreContainer:last-child() {
+    border-right: none;
+}
+
+
+.UserScoreName {
+    color: black;
+    font-weight: 700;
 }
 
 .TwitterTimeline {
@@ -32,15 +101,14 @@
 }
 
 .WhoIsThatTextContainer {
-    width: auto;
+    grid-area: title;
+    width: 100%;
     margin: 15px auto 15px auto;
     background-color: rgb(33, 150, 243);
     border-radius: 10px;
     padding: 30px 15px;
     border: 2px solid black;
-    grid-area: title;
-
-   
+    box-sizing: border-box;
 }
 
 .WhoIsThatText{
@@ -54,7 +122,7 @@
 .ImageBlock {
     margin: 0 auto;
     width: 100%;
-
+    box-sizing: border-box;
     grid-area: image;
 }
 
@@ -100,10 +168,12 @@
     font-weight: 500;
     padding: 5px 10px;
     border-radius: 10px;
+    margin:0 auto;
+    width: 100%;
     margin-top: 15px;
     transition: 1.5s;
     border: 2px solid black;
-
+    box-sizing: border-box;
     grid-area: guessTxt;
 
 }
@@ -219,6 +289,7 @@
 
 .ChooseGenButton {
     grid-area: chosBut;
+    width: 100%;
     margin: 15px auto;
     background-color: rgb(33, 150, 243);
     padding: 10px;
@@ -237,8 +308,9 @@
     outline: none;
 }
 
-.PlayAgainButton{
+.PlayAgainButton {
     grid-area: playBut;
+    width: 100%;
     margin: 15px auto;
     background-color: rgb(33, 150, 243);
     padding: 10px;
@@ -257,6 +329,7 @@
     background-color: #86c6f6;
     outline: none;
 }
+
 
 .gameOverText {
     margin: 15px auto;
@@ -302,11 +375,21 @@
 }
 
 .SharingContainer{
-    display: flex;
     grid-area: share;
+    display: flex;
     margin: 0 auto;
+    margin-bottom: 15px;
     align-items: center;
+}
 
+.ShareText {
+    font-size: 150%;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+.ShareLogos{
+    display: flex;
 }
 
 .TwitterLogoContainer {
@@ -420,55 +503,62 @@
     margin: 0 2px;
 }
 
+.ScoreForm {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 15px;
+}
 
-
-.Container:hover {
-background-color: #ccc;
-
+.ScoreInput {
+    border-radius: 10px;
+    width: 45%;
+    margin: 0 auto;
+    font-size: 110%;
+    padding: 8px 5px 5px 10px;
+    box-sizing: border-box;
+}
+.ModalScoreText{
+    font-size: 150%;
+    font-weight: 800;
+}
+.ModalInfoText{
+    font-size: 120%;
+    font-weight: 600;
+}
+.ModalSaveButtons {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+    margin-top: 20px;
+}
+.ModalConfirmSaveScoreButton {
+    color: green;
+    background: none;
+    border: none;
+    font-size: 120%;
+    font-weight: 600;
+    cursor: pointer;
+}
+.ModalCancelSaveScoreButton {
+    color: red;
+    background: none;
+    border: none;
+    font-size: 120%;
+    font-weight: 600;
+    cursor: pointer;
 }
   
 @media (min-width: 851px) {
-    .WhoIsThatContainer {
-
-        grid-template-areas:
-        "score    score    title    title    title    title    title    title    title    title    result   result"
-        "image    image    image    image    image    image    image    image    image    image    image    image"
-        "guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt"
-        "optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns"
-        "none     none     playBut  playBut  share    share    share    share  chosBut  chosBut    none2    none2 "
-        "gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel"
-        "timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL    timeL";
-
-    }
-
-    .GuessTextContainer {
-        margin: 15px auto;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .OptionsList {
-        margin: 0;
-    }
+    
     .GenLabelContainer {
         width: 28%;
     }
+    
     .PlayText{
         width: 280px;
         margin: 15px auto 15px auto;
     }
-    .WhoIsThatTextContainer {
-        width: 90%;
-    }
-    .ScoreNumber {
-        width: 50%;   
-    }
-    
-    .ImageBlock {
-        /* max-width: 780px; */
-        box-sizing: border-box;
 
-    }
     .PokeSmallSprite {
         width: 128px;
     }
@@ -481,6 +571,7 @@ background-color: #ccc;
         border-radius: 10px;
         padding: 10px;
         box-sizing: border-box;
+        margin-top: 15px;
     }
     .InputOption {
         width: 22.5%;
@@ -494,12 +585,24 @@ background-color: #ccc;
     .WhoIsThatContainer {
 
         grid-template-areas:
-        "score    score    title    title    title    title    title    title    title    title    result   result"
-        "none3    none3    image    image    image    image    image    image    image    image    timeL    timeL"
-        "none3    none3    guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt timeL    timeL"
+        "score    score    score    title    title    title    title    title    title    result   result   result"
+        "topSc    topSc    image    image    image    image    image    image    image    image    timeL    timeL"
+        "topSc    topSc    guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt timeL    timeL"
         "optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns"
-        "none     none     playBut  playBut  share    share    share    share    chosBut  chosBut  none2    none2 "
+        "chosBut  chosBut  chosBut  chosBut  playBut  playBut  playBut  playBut  saveBtt  saveBtt  saveBtt  saveBtt"
+        "share    share    share    share    share    share    share    share    share    share    share    share"
         "gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel";
+
+        grid-template-areas:
+        "score    score    score    title    title    title    title    title    title    result   result   result"
+        "topSc    topSc    image    image    image    image    image    image    image    image    timeL    timeL"
+        "topSc    topSc    guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt guessTxt timeL    timeL"
+        "optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns    optns"
+        
+        "none     none     chosBut  chosBut  playBut  playBut  playBut  playBut  saveBtt    saveBtt    none2  none2"
+        
+        "share    share    share    share    share    share    share    share    share    share    share    share"
+        "gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel    gnsel"
 
     }
     .GenLabelContainer {
@@ -508,17 +611,61 @@ background-color: #ccc;
     .PokeSmallSprite {
         width: 128px;
     }
-    .ImageBlock{
-        width: 90%;
-    }
-    .GuessTextContainer {
-        width: 90%;
-    }
     
     .TwitterTimeline {
         margin: 0;
-        margin-bottom: 15px;
     }
-   
+
+    .TopScores {
+        display: flex;
+        flex-flow: column;
+        overflow-x: hidden;
+
+        height: 400px;
+        background-color: cadetblue;
+
+    }
+
+    .TopScores::-webkit-scrollbar {
+        width: 10px;
+        background: rgb(5, 132, 136);
+        background-color: transparent;
+        border-radius: 10px;
+
+    }
+    .TopScores::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255, .2);
+        border-radius: 10px;
+
+    }
+
+    .UserScoreContainer {
+        width: 100%;
+        height: 80px;
+        box-sizing: border-box;
+        border-right: none;
+        border-top: none;
+        border-bottom: 1px solid black;
+
+    }
+
+    .UserScoreContainer:first-child {
+        border-bottom: 2px solid black;
+    }
+
+    .UserScoreContainer:last-child{
+        border-bottom: none;
+    }
+
+    .SaveScoreButton {
+        margin: 15px auto;
+        margin-top: 15px;
+        height: auto;
+    }
+
+    .gameOverText {
+        font-size: 250%;
+        font-weight: 800;
+    }
 }
 

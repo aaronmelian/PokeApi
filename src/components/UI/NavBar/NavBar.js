@@ -23,10 +23,12 @@ const NavBar = (props) => {
 
         if(!pokeToSearchName) {
             props.searchToggle()
-
+            console.log('logs1')
         } else {
             props.searchPokemon(pokeToSearchName.toLowerCase());
-            setPokeToSearchName(null)
+            setPokeToSearchName(null);
+            console.log('logs2')
+
 
         }
     }
@@ -47,7 +49,7 @@ const NavBar = (props) => {
         if(isNumber(props.searchError)) {
             setErrorText(`Invalid #Dex. (${props.searchError})`) 
         } else {
-            setErrorText(`Invalid Pokemon Name.`) /* (${props.searchError}) */
+            setErrorText(`Invalid Pokemon Name.`)
 
         }
 

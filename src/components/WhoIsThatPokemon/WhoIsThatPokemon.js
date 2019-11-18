@@ -2,6 +2,9 @@ import React, {useState, useEffect, useRef} from 'react';
 import {TwitterTimelineEmbed} from 'react-twitter-embed';
 import classes from './WhoIsThatPokemon.module.css';
 import axios from 'axios';
+
+import Modal from '../UI/Modal/Modal'
+
 import gen1Names from './gen1Names.json';
 import gen2Names from './gen2Names.json';
 import gen3Names from './gen3Names.json';
@@ -17,6 +20,7 @@ import facebookLogo from './facebookLogo.png'
 const WhoIsThatPokemon = (props) => {
 
     const inputRef = useRef(null);
+    const inputUserNameRef = useRef(null);
 
     const [pokeToGuess, setPokeToGuess] = useState(null);
     const [pokeToGuessId, setPokeToGuessId] = useState(null);
@@ -41,6 +45,14 @@ const WhoIsThatPokemon = (props) => {
 
     const [tweetText, setTweetText] = useState(false);
 
+    const [topScores, setTopScores] = useState();
+    
+    const [saveLoading, setSaveLoading] = useState(false);
+
+    const [showModal, setShowModal] = useState(false);
+    const [showSaveButton, setShowSaveButton] = useState(true);
+    const [scoreUserName, setScoreUserName] = useState(null);
+    const [scoreUserEmail, setScoreUserEmail] = useState(null);
 
     const [gen1, setGen1] = useState(false);
     const [gen2, setGen2] = useState(false);
@@ -93,14 +105,13 @@ const WhoIsThatPokemon = (props) => {
         setInputBuffer('');
         setSelectingGen(false);
         
-
-
-
         if(selectingGen) {
             playAgainHandler()
         }
         
     }
+    
+   
 
     useEffect(() => {
         if(!gen1 && !gen2 && !gen3 && !gen4 && !gen5 && !gen6 && !gen7) {
@@ -110,11 +121,38 @@ const WhoIsThatPokemon = (props) => {
             setNoGenSelected(false);
         }
     }, [gen1, gen2, gen3, gen4, gen5, gen6, gen7]);
-    
-    useEffect(() => {
-        console.log(matchedNames)
-    });
 
+    useEffect(() => {
+        getScores()
+    },[]);
+
+  
+    const getScores = () => {
+        axios.get(`https://pokeapi-pokedex.firebaseio.com/topScores.json`)
+        .then(response => {
+            let responseData = response.data
+            let scoresArray = [];
+            for (let key in responseData) {
+                scoresArray.push(responseData[key])
+            }
+            
+            let scoreToSort = [...scoresArray]
+            scoreToSort.sort((a, b) => parseFloat(b.scoreValue) - parseFloat(a.scoreValue));
+ 
+
+            let topScores = scoreToSort.map((scoreData,i) => {
+                return (
+                    <div key={`${scoreData.UserScore}, ${i}`}
+                        className={classes.UserScoreContainer}
+                    >
+                        <div className={classes.UserScoreName}>{scoreData.userName}:</div>
+                        <div className={classes.UserScoreValue}>{scoreData.scoreValue}</div>
+                    </div>
+                )
+            })
+            setTopScores(topScores)
+        });
+    }
 
 
     useEffect(() => {
@@ -285,6 +323,9 @@ const WhoIsThatPokemon = (props) => {
     }
 
     const playAgainHandler = () => {
+        setShowSaveButton(true)
+        setScoreUserName('')
+        setScoreUserEmail('')
         setScore(0);
         setGameOver(false);
         setGuessed('toBe');
@@ -363,11 +404,105 @@ const WhoIsThatPokemon = (props) => {
         inputRef.current.focus()
 
     }
-
-
     
+    //////////////////////////////////////  USER SCORE   //////////////////////////////////////
+
+    const modalToggleHandler = () => {
+        setShowModal(!showModal)
+        if(!showModal) {
+            inputUserNameRef.current.focus()
+        }
+
+    }
+
+    const saveButtonClickedHandler = () => {
+        modalToggleHandler()
+    }
+
+    const handleUserInputNameChange = (event) => {
+        setScoreUserName(event.target.value);
+    }
+
+    const handleUserInputEmailChange = (event) => {
+        setScoreUserEmail(event.target.value);
+    }
+
+    const confirmSaveScoreHandler = (event) => {
+        if(scoreUserName.length <= 3) {
+            window.alert("Name must be at least 4 characters long")
+        } else {
+
+            if(event) {
+                event.preventDefault()
+            }
+
+            const scoreData = {
+                userName: scoreUserName,
+                scoreValue: score,
+                email: scoreUserEmail
+            }
+
+            axios.post(`https://pokeapi-pokedex.firebaseio.com/topScores.json`, scoreData)
+            .then(response => {
+                getScores();
+                setSaveLoading(false)
+            })
+            .catch(error => {
+                getScores();
+                setSaveLoading(false)
+            });
+
+            modalToggleHandler()
+            setShowSaveButton(false)
+        }
+    }
+
+    //////////////////////////////////////  USER SCORE   //////////////////////////////////////
+
+
+
+
     return(
+
+        
         <div className={classes.WhoIsThatContainerBackGround}>
+
+            <Modal 
+                backdropClicked={() => {modalToggleHandler()}}
+                show={showModal}
+            >   
+                <p className={classes.ModalScoreText}>Your Score is {score}!</p>
+                <p className={classes.ModalInfoText}>Please enter you Info!</p>
+                <form className={classes.ScoreForm} onSubmit={(event) => confirmSaveScoreHandler(event)}>
+                    <input 
+                        onChange={(event)=>handleUserInputNameChange(event)}
+                        className={classes.ScoreInput}
+                        placeholder={'Name'}
+                        type='text'
+                        name='UserName'
+                        value={scoreUserName || ''}
+                        autoComplete="off"
+                        spellCheck="false"
+                        ref={inputUserNameRef}
+                    ></input>
+
+                    <input 
+                        onChange={(event)=>handleUserInputEmailChange(event)}
+                        className={classes.ScoreInput}
+                        placeholder={'Email'}
+                        type='text'
+                        name='UserEmail'
+                        value={scoreUserEmail || ''}
+                        autoComplete="off"
+                        spellCheck="false"
+                    ></input>
+                </form>
+                <div className={classes.ModalSaveButtons}>
+                    <button className={classes.ModalConfirmSaveScoreButton} onClick={()=>{confirmSaveScoreHandler()}}>Save</button>
+                    <button className={classes.ModalCancelSaveScoreButton} onClick={()=>{modalToggleHandler()}}>Cancel</button>
+                </div>
+            
+            </Modal>
 
             <div className={classes.WhoIsThatContainer}>
                 
@@ -404,13 +539,26 @@ const WhoIsThatPokemon = (props) => {
                 </div>
                 
                 {gameOver || gameWon || (window.innerWidth >= 992 && !selectingGen)? 
-                <div className={classes.TwitterTimeline}>
-                    <TwitterTimelineEmbed
-                        sourceType="profile"
-                        screenName="pokemon_api"
-                        options={{height: "100%", width: 850}}
-                    />
-                </div>
+                    <div id='twitterTimeline' className={classes.TwitterTimeline}>
+                        <TwitterTimelineEmbed
+                            sourceType="profile"
+                            screenName="pokemon_api"
+                            options={{height: "100%", width: 850}}
+                        />
+                    </div>
+                :null}
+
+                {gameOver || gameWon || (window.innerWidth >= 992 && !selectingGen)? 
+                    <div className={classes.TopScores}>
+
+                        <div
+                            className={classes.UserScoreContainer}
+                        >
+                            <div className={classes.UserScoreName}>Top Scores:</div>
+                        </div>
+
+                        {topScores}
+                    </div>
                 :null}
                 
 
@@ -433,6 +581,8 @@ const WhoIsThatPokemon = (props) => {
                     </div>
                 </div>
                 
+
+
                 {!selectingGen?
                 <div
                     className={classes.GuessTextContainer}
@@ -440,6 +590,7 @@ const WhoIsThatPokemon = (props) => {
                     : (guessed === 'no' ? {backgroundColor: 'red'}
                     : (guessed === 'toBe' ? {backgroundColor: 'rgb(33, 150, 243)'} : null))}
                 >
+
                     <p className={classes.GuessText}>It's:</p>
                     <form onSubmit={(event) => handleSubmit(event)} className={classes.InputContainer}>
                             <input 
@@ -477,31 +628,27 @@ const WhoIsThatPokemon = (props) => {
                 :null }
                 
 
-                { (gameOver || gameWon) && !selectingGen ?
-                            <button className={classes.PlayAgainButton} tabIndex={0} onClick={(event) => playAgainHandler()}>
-                                Play Again?
-                            </button>
-                            
-                : null }
 
                 { (gameOver || gameWon) && !selectingGen ?
 
                 <div className={classes.SharingContainer}>
 
-                    <div className={classes.TwitterLogoContainer} onClick={() => {
-                        window.open(`https://twitter.com/share?text=${tweetText}&screen_name=pokemon_api&url=https://pokeapi-pokedex.firebaseapp.com/`, 'Twitter', 'height=285,width=550,resizable=1')
-                        }}
-                    >
-                        <img className={classes.TwitterLogo} src={twitterLogo}/>
-                    </div>
+                    <div className={classes.ShareLogos}>
+                        <div className={classes.TwitterLogoContainer} onClick={() => {
+                            window.open(`https://twitter.com/share?text=${tweetText}&screen_name=pokemon_api&url=https://pokeapi-pokedex.firebaseapp.com/`, 'Twitter', 'height=285,width=550,resizable=1')
+                            }}
+                        >
+                            <img className={classes.TwitterLogo} src={twitterLogo}/>
+                        </div>
 
-                    <div className={classes.FacebookLogoContainer} onClick={() => {
-                        window.open(`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpokeapi-pokedex.firebaseapp.com%2F&amp;src=sdkpreparse`, 'Facebook', 'height=285,width=550,resizable=1')
-                        }}
-                    >
-                        <img className={classes.FacebookLogo} src={facebookLogo}/>
+                        <div className={classes.FacebookLogoContainer} onClick={() => {
+                            window.open(`https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpokeapi-pokedex.firebaseapp.com%2F&amp;src=sdkpreparse`, 'Facebook', 'height=285,width=550,resizable=1')
+                            }}
+                        >
+                            <img className={classes.FacebookLogo} src={facebookLogo}/>
+                        </div>
                     </div>
-
+                    
                 </div>
 
                 : null }
@@ -511,6 +658,22 @@ const WhoIsThatPokemon = (props) => {
                                 Choose Gen?
                             </button>
                 : null }
+
+                
+                { (gameOver || gameWon) && !selectingGen ?
+                            <button className={classes.PlayAgainButton} tabIndex={0} onClick={(event) => playAgainHandler()}>
+                                Play Again!
+                            </button>
+                            
+                : null }
+
+                { (gameOver || gameWon) && !selectingGen?
+                    showSaveButton ?
+                    <button className={classes.SaveScoreButton} onClick={()=>saveButtonClickedHandler()}>Save Score</button>
+                    :
+                    <button className={classes.SaveScoreButton} style={{backgroundColor: 'green', cursor: 'normal'}}>Score Saved!</button>
+                : null }
+
 
                 <div className={classes.SelectGenContainer}>
                     
