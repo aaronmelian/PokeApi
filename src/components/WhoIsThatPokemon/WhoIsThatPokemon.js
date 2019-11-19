@@ -41,9 +41,10 @@ const WhoIsThatPokemon = (props) => {
 
     const [selectingGen, setSelectingGen] = useState(true);
 
-    const [noGenSelected, setNoGenSelected] = useState(false);
+    const [noGenSelected, setNoGenSelected] = useState(true);
 
     const [tweetText, setTweetText] = useState(false);
+    const [twitterTimelineHeight, setTwitterTimelineHeight] = useState('350px');
 
     const [topScores, setTopScores] = useState();
     
@@ -122,6 +123,9 @@ const WhoIsThatPokemon = (props) => {
 
     useEffect(() => {
         getScores()
+        if(window.innerWidth >= 992) {
+            setTwitterTimelineHeight('100%')
+        }
     },[]);
 
   
@@ -437,6 +441,8 @@ const WhoIsThatPokemon = (props) => {
     const confirmSaveScoreHandler = (event) => {
         if(scoreUserName.length <= 3) {
             window.alert("Name must be at least 4 characters long")
+        } else if (scoreUserName.length >= 15) {
+            window.alert("Name must be less than 15 characters long")
         } else {
 
             if(event) {
@@ -529,7 +535,6 @@ const WhoIsThatPokemon = (props) => {
                                 <div className={classes.WhoIsThatPoke}>
                                 {pokeToGuessId ?
                                     <ProgressiveImage
-                                        preview={'https://via.placeholder.com/1'}
                                         image={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' + pokeToGuessId + '.png'}
                                         alt={pokeToGuessId}
                                         brightStyle={brightStyle}
@@ -561,7 +566,7 @@ const WhoIsThatPokemon = (props) => {
                         <TwitterTimelineEmbed
                             sourceType="profile"
                             screenName="pokemon_api"
-                            options={{height: "100%", width: 850}}
+                            options={{height: twitterTimelineHeight, width: 850}}
                         />
                     </div>
                 :null}
