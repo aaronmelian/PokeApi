@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import {TwitterTimelineEmbed} from 'react-twitter-embed';
 import classes from './WhoIsThatPokemon.module.css';
 import axios from 'axios';
-
+import ProgressiveImage from '../UI/ProgressiveImage/ProgressiveImage'
 import Modal from '../UI/Modal/Modal'
 
 import gen1Names from './gen1Names.json';
@@ -523,9 +523,19 @@ const WhoIsThatPokemon = (props) => {
                         <div className={classes.WhoIsThatPokeContainer}>
                             <img className={classes.WhoIsThatPokeBackground} src={'https://external-preview.redd.it/e5zoQw-hgw-LCjdhC_4G8IAcHxex5pzda_BD_FPTcBY.png?width=960&crop=smart&auto=webp&s=23f9df250a8fe74763c3ba7cb8e46421e63cba2d'}/>
                             
-                            {showImage ? 
+                            {showImage && pokeToGuessId ? 
                                 // <img className={classes.WhoIsThatPoke} style={brightStyle} src={'https://pokeres.bastionbot.org/images/pokemon/' + pokeToGuessId + '.png'}/>
-                                <img className={classes.WhoIsThatPoke} style={brightStyle} src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' + pokeToGuessId + '.png'}/>
+                                // <img className={classes.WhoIsThatPoke} style={brightStyle} src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' + pokeToGuessId + '.png'}/>
+                                <div className={classes.WhoIsThatPoke}>
+                                {pokeToGuessId ?
+                                    <ProgressiveImage
+                                        preview={'https://via.placeholder.com/1'}
+                                        image={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/' + pokeToGuessId + '.png'}
+                                        alt={pokeToGuessId}
+                                        brightStyle={brightStyle}
+                                    /> 
+                                : null}
+                                </div>
                             : null}
 
                             { gameOver ?

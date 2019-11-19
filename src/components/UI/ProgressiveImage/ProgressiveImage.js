@@ -47,14 +47,16 @@ class ProgressiveImage extends Component {
       }
     }
     
+
     render() {
-      const { currentImage, loading} = this.state
-      const { alt } = this.props.alt
-
-      return <img className={classes.Img} style={this.style(loading)} src={currentImage} alt={alt} />
-     
+      let styling;
+      if(this.props.brightStyle) {
+        styling = this.props.brightStyle
+      }
+        const { currentImage, loading} = this.state
+        console.log(this.props.alt)
+      return <img className={classes.Img} style={styling || this.style(loading)} src={currentImage} alt={this.props.alt} />
     }
-
 
   }
 

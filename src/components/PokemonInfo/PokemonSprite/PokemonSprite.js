@@ -16,6 +16,7 @@ const PokemonSprites = (props) => {
             <ProgressiveImage
                 image={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${spriteId}.png`}
                 alt={`Pokemon number ${props.pokemonId}`}
+                preview={'https://via.placeholder.com/215'}
             />
         </div>
 

@@ -87,11 +87,6 @@ const PokemonCard = (props) => {
         }
     }
 
-
-    console.log(props.dexNumber)    
-    console.log(props.lastPokemon)    
-
-
     return (
         props.dexNumber <= props.lastPokemon ?
 
@@ -101,6 +96,7 @@ const PokemonCard = (props) => {
             <div className={classes.PokeSpriteContainer}>
                 <div className={classes.PokeSprite}>
                     <ProgressiveImage
+                        preview={'https://via.placeholder.com/215'}
                         image={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${spriteId}.png`}
                         alt={props.name}
                     />
@@ -122,6 +118,7 @@ const PokemonCard = (props) => {
                 
                 <div className={classes.PokeSmallSprite}>
                     <ProgressiveImage
+                        preview={'https://via.placeholder.com/32'}
                         image={`https://www.pkparaiso.com/imagenes/pokedex/sm-icons/${spriteId}.png`}
                         alt={props.name}
                     />

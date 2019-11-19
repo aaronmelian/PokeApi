@@ -3,8 +3,6 @@ import axios from 'axios'
 
 
 import classes from './PokeList.module.css'
-import classes2 from '../components/PokemonInfo/PokemonTypeLabel/PokemonTypeLabel.module.css'
-// import {Link, Route} from 'react-router-dom'
 
 import PokemonCard from '../components/PokemonCard/PokemonCard'
 
@@ -67,7 +65,8 @@ class PokeList extends Component {
         this.setState({
 
             showSpinner: false,
-            
+
+            showingType: null,
             allPokeFromType: null,
 
             pokemon: null,
@@ -161,7 +160,9 @@ class PokeList extends Component {
     }
 
     typeClickedHandler (type) {
-        this.setState({showingType: type, selectedPokemon: null, pokemon: null, showSpinner:true, pokePage: 1})
+        this.setState({showingType: type, selectedPokemon: null, pokemon: null, pokePage: 1})
+        // this.setState({showingType: type, selectedPokemon: null, pokemon: null, showSpinner:true, pokePage: 1})
+
         axios.get(`https://pokeapi.co/api/v2/type/${type}/`)
         .then(response => {
 
@@ -528,7 +529,6 @@ class PokeList extends Component {
                     homeIconClicked={() => this.goHomeHandler()}
                 />
 
-                {this.state.playingWhoIs? <WhoIsThatPokemon/> : null}
 
                 {!this.state.showPokedex && !this.state.playingWhoIs?
                     <div>
@@ -538,6 +538,8 @@ class PokeList extends Component {
                         />
                     </div>
                 : null}
+
+                {this.state.playingWhoIs? <WhoIsThatPokemon/> : null}
 
                 {this.state.showPokedex ?
                     <div>{pokeDex}</div>

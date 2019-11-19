@@ -36,6 +36,7 @@ const PokemonIngameSprites = (props) => {
                             <ProgressiveImage
                                 image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${megaEvolutionId}.png`}
                                 alt={obj.pokemon.name}
+                                preview={'https://via.placeholder.com/96'}
                             />
                         </div>
                         
@@ -61,6 +62,7 @@ const PokemonIngameSprites = (props) => {
                                 <ProgressiveImage
                                     image={pokeSprites.front_default}
                                     alt={megaPokeData[0].pokemon.name + ' front'}
+                                    preview={'https://via.placeholder.com/96'}
                                 />
                             </div>
                             <p className={classes.Name}>{megaPokeData[0].pokemon.name}</p>
@@ -75,6 +77,7 @@ const PokemonIngameSprites = (props) => {
                                 <ProgressiveImage
                                     image={pokeSprites.back_default}
                                     alt={megaPokeData[0].pokemon.name + ' back'}
+                                    preview={'https://via.placeholder.com/96'}
                                 />
                             </div>
                             
@@ -89,6 +92,7 @@ const PokemonIngameSprites = (props) => {
                                 <ProgressiveImage
                                     image={pokeSprites.front_shiny}
                                     alt={megaPokeData[0].pokemon.name + ' shiny-front'}
+                                    preview={'https://via.placeholder.com/96'}
                                 />
                             </div>
 
@@ -102,8 +106,9 @@ const PokemonIngameSprites = (props) => {
                         {/* <img alt={megaPokeData[0].pokemon.name + ' shiny-back'} className={classes.Sprite} src={pokeSprites.back_shiny}/> */}
                         <div className={classes.Sprite}>
                             <ProgressiveImage
-                                    image={pokeSprites.back_shiny}
-                                    alt={megaPokeData[0].pokemon.name + ' shiny-back'}
+                                image={pokeSprites.back_shiny}
+                                alt={megaPokeData[0].pokemon.name + ' shiny-back'}
+                                preview={'https://via.placeholder.com/96'}
                             />
                         </div>
 
