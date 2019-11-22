@@ -12,23 +12,17 @@ const NextPokemonButton = (props) => {
 
 
     return (
-        
-        <div className={classes.ButtonContainer}>
+        <ul className={classes.ButtonContainer}>
 
-            <ul>
+            {props.showPrev ?
+            <li onClick={props.prevButtonClicked} className={`${classes.Button} + ${classes.Prev}`}><div></div></li>
+            : null}
 
-                {props.showPrev ?
-                <li onClick={props.prevButtonClicked} className={`${classes.Button} + ${classes.Prev}`}><div></div></li>
-                : null}
+            {props.showNext ?
+            <li onClick={props.nextButtonClicked} className={classes.Button}><div></div></li>
+            : null}
 
-                {props.showNext ?
-                <li onClick={props.nextButtonClicked} className={classes.Button}><div></div></li>
-                : null}
-
-            </ul>
-
-        </div>
-
+        </ul>
     )
 };
 

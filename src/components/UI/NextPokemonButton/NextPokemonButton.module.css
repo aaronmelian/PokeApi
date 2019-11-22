@@ -68,11 +68,13 @@ ul li div {
 @media (min-width: 768px) {
 .ButtonContainer {
     grid-area: buttn;
-    margin-bottom: 30px;
+    margin-right: 0;
 }
 }
-
-
-
+@media (min-width: 992px) {
+    .ButtonContainer {
+        margin-right: 5%;
+    }
+}
 
 

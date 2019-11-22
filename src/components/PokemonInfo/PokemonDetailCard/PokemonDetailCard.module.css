@@ -96,8 +96,24 @@
 
 @media (min-width: 768px) {
 
-.PokemonDetailCardContainer {
-    grid-area: card;
-}
+    .PokemonDetailCardContainer {
+        grid-area: card;
+        margin: 125px 0 0px 0;
+
+    }
+    .Card {
+        margin-left: 0;
+    }
 }
 
+@media (min-width: 992px) {
+
+    .PokemonDetailCardContainer {
+        grid-area: card;
+        margin: 0 auto;
+        margin-top: 125px;
+    }
+    .Card {
+        margin: 0 auto;
+    }
+}

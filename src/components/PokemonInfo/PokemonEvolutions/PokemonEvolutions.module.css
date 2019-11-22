@@ -1,12 +1,13 @@
 .PokemonEvolutionChain {
     display: flex;
     flex-flow: column;
-    background: #fff url("https://assets.pokemon.com/static2/_ui/img/chrome/body_gray_bg.png");
     justify-content: center;
     margin: 0px auto;
     width: 100%;
-    border: 2px solid black;
+    border: 4px solid black;
     border-radius: 40px; 
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .PreContainer, .MiddleContainer, .PostContainer {
@@ -17,6 +18,7 @@
     flex-flow: row wrap;
     justify-content: center;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .EvolutionCard {
@@ -24,18 +26,18 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
+    box-sizing: border-box;
 }
 
-.PokeName {
-    font-family: sans-serif;
+/* .PokeName {
+    font-family: 'poppins';
     text-transform: capitalize;
     font-weight: 600;
-    margin: 5px;
+    margin: 0px;
     padding: 5px 0px;
     font-size: 115%;
-
-}
-
+    box-sizing: border-box;
+} */
 
 .ArrowDown {
     display: inline-block;
@@ -48,14 +50,28 @@
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     color: white;
+    box-sizing: border-box;
 }
 
 .ArrowMargins {
     margin-top: 0px;
     margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
-    
+.BoxTitle {
+    font-family: 'poppins';
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    font-size: 125%;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-bottom: 2px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 @media (min-width: 768px) {
 .PokemonEvolutionChain {
     grid-area: evolu;
@@ -68,4 +84,14 @@
         margin:0 auto;
         width: 95%;
     }
+    .EvolutionBox {
+        display: flex;
+        flex-flow: row;
     }
+    .ArrowDown {
+        transform: rotate(-45deg);
+    }
+    .ArrowMargins {
+        margin: auto;
+    }
+}

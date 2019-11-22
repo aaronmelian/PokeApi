@@ -23,7 +23,6 @@ const NavBar = (props) => {
 
         if(!pokeToSearchName) {
             props.searchToggle()
-            console.log('logs1')
         } else {
             props.searchPokemon(pokeToSearchName.toLowerCase());
             setPokeToSearchName(null);

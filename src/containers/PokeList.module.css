@@ -35,19 +35,25 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
-    
+    grid-row-gap: 30px;
+
     grid-template-areas:
     "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
-    "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
-    "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
-    "card   card   card   card   card   card   measu   measu   measu   measu   measu   measu "
-    "card   card   card   card   card   card   measu   measu   measu   measu   measu   measu "
     "buttn  buttn  buttn  buttn  buttn  buttn  buttn   buttn   buttn   buttn   buttn   buttn "
     "dmgRel dmgRel dmgRel dmgRel dmgRel dmgRel dmgRel  dmgRel  dmgRel  dmgRel  dmgRel  dmgRel"
     "sprite sprite sprite sprite sprite sprite sprite  sprite  sprite  sprite  sprite  sprite"
-    "evolu  evolu  evolu  evolu  evolu  evolu  evolu   evolu   evolu   evolu   evolu   evolu "
+    "evolu  evolu  evolu  evolu  evolu  evolu  evolu   evolu   evolu   evolu   evolu   evolu ";
+
+    grid-template-areas:
+        "card   card   card   card   card   entrie   entrie  entrie  entrie  entrie  entrie  entrie"
+        "card   card   card   card   card   buttn   buttn   buttn   buttn   buttn   buttn   buttn "
+        "sprite sprite sprite sprite sprite sprite sprite  sprite  sprite  sprite  sprite  sprite"
+        "evolu  evolu  evolu  evolu  evolu  evolu  evolu   evolu   evolu   evolu   evolu   evolu "
+        "dmgRel dmgRel dmgRel dmgRel dmgRel dmgRel dmgRel  dmgRel  dmgRel  dmgRel  dmgRel  dmgRel"
 
 }
+
+
 
 }
 
@@ -58,21 +64,16 @@
 }
 
     .PokemonDetails {
-
         grid-template-areas:
-        "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
-        "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
-        "card   card   card   card   card   card   entrie  entrie  entrie  entrie  entrie  entrie"
-        "card   card   card   card   card   card   measu   measu   measu   measu   measu   measu "
-        "card   card   card   card   card   card   measu   measu   measu   measu   measu   measu "
-        "buttn  buttn  buttn  buttn  buttn  buttn  buttn   buttn   buttn   buttn   buttn   buttn "
+        "card   card   card   card   entrie   entrie   entrie  entrie  entrie  entrie  entrie  entrie"
+        "card   card   card   card   buttn   buttn   buttn   buttn   buttn   buttn   buttn   buttn "
         "sprite sprite sprite sprite sprite sprite sprite  sprite  sprite  sprite  sprite  sprite"
-        "evolu  evolu  evolu  evolu  evolu  evolu  dmgRel  dmgRel  dmgRel  dmgRel  dmgRel  dmgRel ";
-
-       
+        "evolu  evolu  evolu  evolu  evolu  evolu  evolu   evolu   evolu   evolu   evolu   evolu "
+        "dmgRel dmgRel dmgRel dmgRel dmgRel dmgRel dmgRel  dmgRel  dmgRel  dmgRel  dmgRel  dmgRel"
     }
 }
 
+        /* "buttn  buttn  buttn  buttn  buttn  buttn  buttn   buttn   buttn   buttn   buttn   buttn "; */
 
 .bug {
     background-color: #A6B91A;

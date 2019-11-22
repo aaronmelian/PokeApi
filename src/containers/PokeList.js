@@ -17,7 +17,6 @@ import Spinner from '../components/UI/Spinner/Spinner'
 import NextPokemonButton from '../components/UI/NextPokemonButton/NextPokemonButton'
 import PokemonDetailCard from '../components/PokemonInfo/PokemonDetailCard/PokemonDetailCard'
 import PokemonEvolutions from '../components/PokemonInfo/PokemonEvolutions/PokemonEvolutions'
-import PokemonMeasurements from '../components/PokemonInfo/PokemonMeasurements/PokemonMeasurements'
 import PokemonIngameSprites from '../components/PokemonInfo/PokemonIngameSprites/PokemonIngameSprites'
 import DexEntrie from '../components/PokemonInfo/DexEntrie/DexEntrie'
 import PokemonTypes from '../components/PokemonInfo/PokemonTypes/PokemonTypes'
@@ -50,6 +49,8 @@ class PokeList extends Component {
         selectedPokemonEntries: null,
         selectedPokemonTypes: null,
         selectedPokemonStats: null,
+        selectedPokemonColors: null,
+
 
         evolutions: null,
 
@@ -58,8 +59,31 @@ class PokeList extends Component {
         showSearchInput: false,
 
         showPokedex: null,
-        playingWhoIs: false
+        playingWhoIs: false,
+
+        colors: {
+
+            normal: '#A8A77A',
+            fire:  '#EE8130',
+            water:  '#6390F0',
+            electric:  '#F7D02C',
+            grass:  '#7AC74C',
+            ice:  '#96D9D6',
+            fighting:  '#C22E28',
+            poison:  '#A33EA1',
+            ground:  '#E2BF65',
+            flying:  '#A98FF3',
+            psychic:  '#F95587',
+            bug:  '#A6B91A',
+            rock:  '#B6A136',
+            ghost:  '#735797',
+            dragon:  '#6F35FC',
+            dark:  '#705746',
+            steel:  '#B7B7CE',
+            fairy:  '#D685AD'
+        }
     }
+
     
     goHomeHandler() {
         this.setState({
@@ -85,6 +109,8 @@ class PokeList extends Component {
             selectedPokemonEntries: null,
             selectedPokemonTypes: null,
             selectedPokemonStats: null,
+            selectedPokemonColors: null,
+
 
             evolutions: null,
 
@@ -309,8 +335,18 @@ class PokeList extends Component {
         const clickedPokemonSprites = response.data.sprites;
         const clickedPokemonTypes = response.data.types;
         const clickedPokemonStats = response.data.stats;
+        let clickedPokemonColors = null;
 
-        
+        let typeNames = []
+        clickedPokemonTypes.forEach(type => {
+            typeNames.push(type.type.name)
+        })
+
+        if(typeNames.length === 1) {
+            clickedPokemonColors = [this.state.colors[typeNames[0]], 'black']
+        } else if(typeNames.length === 2) {
+            clickedPokemonColors = [this.state.colors[typeNames[0]], this.state.colors[typeNames[1]]]
+        }
         
 
         if (clickedPokemon) {
@@ -341,6 +377,7 @@ class PokeList extends Component {
                             selectedPokemonEntries: clickedPokemonEntries,
                             selectedPokemonTypes: clickedPokemonTypes,
                             selectedPokemonStats: clickedPokemonStats,
+                            selectedPokemonColors: clickedPokemonColors,
 
                             evolutions: resp.data.chain,
 
@@ -472,6 +509,7 @@ class PokeList extends Component {
                             types={this.state.selectedPokemonTypes}
                             stats={this.state.selectedPokemonStats}
                             typeClicked={(type)=>{this.typeClickedHandler(type)}}
+                            pokemonColors={this.state.selectedPokemonColors}
 
                         />
 
@@ -483,15 +521,14 @@ class PokeList extends Component {
                         />
 
 
-                        <PokemonMeasurements 
+                        <DexEntrie 
                             pokeColor={this.state.selectedPokemonColor}
                             pokeHabitat={this.state.selectedPokemonHabitat}
                             height={this.state.selectedPokemon.height}
                             weight={this.state.selectedPokemon.weight}
-                        />
-
-                        <DexEntrie 
                             entries={this.state.selectedPokemonEntries}
+                            pokemonColors={this.state.selectedPokemonColors}
+
                         />      
 
                         <PokemonTypes 
@@ -503,6 +540,8 @@ class PokeList extends Component {
                         <PokemonIngameSprites
                             pokeSprites={this.state.selectedPokemonSprites}
                             pokeMegaData={this.state.selectedPokemonMega}
+                            pokemonColors={this.state.selectedPokemonColors}
+                            types={this.state.selectedPokemonTypes}
                         />
                                                 
                         <PokemonEvolutions 

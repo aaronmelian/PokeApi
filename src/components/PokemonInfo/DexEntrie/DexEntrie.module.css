@@ -1,22 +1,69 @@
-.EntrieContainer {
-    font-family: "sans-serif";
-    text-align: left;
+.PokemonInfoBorderWrap {
+    position: relative;
+    /* background: linear-gradient(to right, red, purple); */
+    padding: 6px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
     margin: 30px 0;
-    height: auto;
-
-    font-size: 150%;
-    border-radius: 40px;
-    padding: 25px;
-    background-color: rgb(74, 156, 223);
-    border: 2px solid black;
-    color: #fff;
+    box-sizing: border-box;
 
 }
 
+.PokemonInfo {
+    background-color: white;
+    text-align: left;
+    margin: 0px 0;
+    height: 100%;
+    border-radius: 24px;
+    padding: 25px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.EntrieContainer {
+    font-size: 150%;
+    font-family: 'poppins';
+    font-weight: 600;
+    margin-bottom: 10px;
+    
+}
+
+
+.Category {
+    font-size: 150%;
+    margin: 5px 0;
+    font-weight: 900;
+}
+
+.Property {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: black;
+
+}
+
+.Unit {
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
 @media (min-width: 768px) {
-    .EntrieContainer {
+    .PokemonInfoBorderWrap {
         grid-area: entrie;
         margin: auto 0;
         margin-top: 125px;
+        height: 380px;
     }
+    .EntrieContainer {
+        margin-bottom: 15px;
     }
+}
+
+@media (min-width: 992px) {
+    .PokemonInfoBorderWrap {
+        height: 339.5px;
+        margin-right: 5%;
+    }
+}

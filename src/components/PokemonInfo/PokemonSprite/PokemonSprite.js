@@ -10,16 +10,15 @@ const PokemonSprites = (props) => {
             spriteId = '0' + spriteId;
         }
     return (
-
-        <div className={classes.SpritesContainer} onClick={props.evolutionClicked}>
-
-            <ProgressiveImage
-                image={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${spriteId}.png`}
-                alt={`Pokemon number ${props.pokemonId}`}
-                preview={'https://via.placeholder.com/215'}
-            />
+        <div className={classes.SpritesContainerBorder} onClick={props.evolutionClicked}>
+            <div className={classes.SpritesContainer} onClick={props.evolutionClicked}>
+                <ProgressiveImage
+                    image={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${spriteId}.png`}
+                    alt={`Pokemon number ${props.pokemonId}`}
+                    preview={'https://via.placeholder.com/215'}
+                />
+            </div>
         </div>
-
     )
 
 };

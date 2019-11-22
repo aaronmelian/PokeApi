@@ -1,78 +1,100 @@
-.PokemonIngameSprites {
+.PokemonIngameSpritesContainer {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     width: 100%;
-    border: 2px solid black;
-    border-radius:  40px;
-    background:  url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
-    background-color: #a4a4a4; 
+    font-family: 'poppins';
+    margin: 15px auto;
+    box-sizing: border-box;
+}
+
+.Card {
+    border: 4px solid black;
+    border-radius: 40px;
     overflow: hidden;
-    justify-content: center;
-    margin: 20px auto;
-    padding: 15px 5px;
-    box-sizing: border-box;
-
-}
-
-.SpriteContainer {
-    width: 50%;
-    box-sizing: border-box;
-    padding: 5px;
-}
-
-.Sprite {
     width: 100%;
-    height: auto;
+    margin: 15px auto;
+    box-sizing: border-box;
 }
 
-.FixingCont {
-    width: 100%;
+.InfoWindow {
+    background-color: white;
+    margin: 0px 0;
+    border-radius: 0 0 24px 24px;
     display: flex;
+    flex-flow: column;
     justify-content: center;
+    box-sizing: border-box;
+
 }
 
-.Name {
+.BoxTitle {
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    font-size: 125%;
+    font-weight: 600;
     text-transform: capitalize;
-    margin: 0 0 10px 0;
-    position: relative;
+    padding-bottom: 2px;
+    box-sizing: border-box;
+}
 
-    bottom: 20px;
-    font-size: 150%;
-    font-weight: 800;
+.BoxTitleBottom {
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    font-size: 125%;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
 
-    
+}
+
+.SpriteBox {
+    width: 50%;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+}
+.typeImgContainer {
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.typeImg{
+    width: 40%;
+    margin: 5px auto;
 }
 
 @media (min-width: 768px) {
-.PokemonIngameSpritesContainer {
-    grid-area: sprite;
+    .PokemonIngameSpritesContainer {
+        grid-area: sprite;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+    }
+    .Card {
+        margin: 0px 0;
+        width: 30%;
+    }
 
-}
+
 }
 
 @media (min-width: 992px) {
     .PokemonIngameSpritesContainer {
-        width: 97.5%;
-        margin: 0px auto;
-
+        width: 100%;
+        padding: 0 2.5%;
+        margin: 0;
+        justify-content: space-between;
     }
-    .PokemonIngameSprites {
-        margin: 20px auto;
-    }
-    .TitlesTop {
-        display: none;
-    }
-    .TitlesBottom {
-        display: none;
-    }
-    .SpriteContainer {
-        width: 25%;
-    }
-    .Sprite{
-        width: 80%;
-        margin: 0 auto;
-    }
-    .Name {
-        bottom: 30px;
+    .Card {
+        width: 30%;
     }
 }

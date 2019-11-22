@@ -54,7 +54,6 @@ class ProgressiveImage extends Component {
         styling = this.props.brightStyle
       }
         const { currentImage, loading} = this.state
-        console.log(this.props.alt)
       return <img className={classes.Img} style={styling || this.style(loading)} src={currentImage} alt={this.props.alt} />
     }
 
