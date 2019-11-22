@@ -47,6 +47,7 @@ const PokemonTypes = (props) => {
     useEffect(() => {
         if (pokemonTypesData) {
             let nameStyle = null;
+
             if(pokemonTypesData.length === 1) {
                 nameStyle = {backgroundColor: colors[pokemonTypesData[0].type.name]}
             } else if (pokemonTypesData.length === 2) {
@@ -66,8 +67,8 @@ const PokemonTypes = (props) => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${props.pokemonId}/`).then(resp => {
         // setPokemonData(resp.data)
         types = resp.data && Object.entries(resp.data.types).map(obj => {
-            let type = obj[1].type.name
-            
+            let type = obj[1].type.name;
+
             return <PokemonTypeLabel typeClicked={()=>{props.typeClicked(type)}} type={type} typeColor={colors[type]} key={type}/>
 
         })

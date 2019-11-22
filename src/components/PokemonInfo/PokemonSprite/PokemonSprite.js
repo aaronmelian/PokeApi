@@ -9,8 +9,13 @@ const PokemonSprites = (props) => {
         while (spriteId.length < 3) {
             spriteId = '0' + spriteId;
         }
+
+        let borderStyle = null;
+
+        // linear-gradient(to right bottom, rgb(238, 129, 48), black);
+
     return (
-        <div className={classes.SpritesContainerBorder} onClick={props.evolutionClicked}>
+        <div className={classes.SpritesContainerBorder} style={borderStyle} onClick={props.evolutionClicked}>
             <div className={classes.SpritesContainer} onClick={props.evolutionClicked}>
                 <ProgressiveImage
                     image={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${spriteId}.png`}

@@ -26,9 +26,6 @@ const NavBar = (props) => {
         } else {
             props.searchPokemon(pokeToSearchName.toLowerCase());
             setPokeToSearchName(null);
-            console.log('logs2')
-
-
         }
     }
 

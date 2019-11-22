@@ -21,6 +21,10 @@ const PokemonEvolutions = (props) => {
     let firstStage = null;
     let secondStage = null;
     let thirdStage = null;
+
+    const getPokemonTypeName = (typeName) => {
+        console.log(typeName)
+    }
   
     useEffect(() => {
 
@@ -60,6 +64,8 @@ const PokemonEvolutions = (props) => {
                         showDisadvantages={false}
                         pokeName={preEvolution[0].name}
                         typeClicked={(type)=>{props.typeClicked(type)}}
+                        
+                        getPokemonTypeName={(type) => getPokemonTypeName(type)}
                     />
                 </div>
             )
