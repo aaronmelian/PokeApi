@@ -13,7 +13,7 @@ It has two major features:
         - Generation Select.
         - Top Scores saved and displayed.
         - Name autocomplete suggestions for spellcheck (clickable).
-        - Game set to selected max score depending on wich enerations are active (pokemon).
+        - Game set to selected max score depending on wich generations are active (pokemon).
         - Pokemon are randomly selected and do not repeat themselves.
 
 Enjoy!
